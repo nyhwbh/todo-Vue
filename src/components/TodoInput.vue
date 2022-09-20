@@ -1,5 +1,5 @@
 <template>
-  <div class="inputBox shadow">
+  <div class="inputBox">
     <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
     <!-- <button v-on:click="addTodo">add</button> -->
     <span class="addContainer" v-on:click="addTodo">
