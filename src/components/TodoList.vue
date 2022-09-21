@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem" class="shadow" >
-        <i class="checkBtn fa-solid fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}" v-on:click="toggleComplete(todoItem)"></i>
+        <i class="checkBtn fa-solid fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}" v-on:click="toggleComplete(todoItem,index)"></i>
         <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
         <span class="removeBtn" v-on:click="removeTodo(todoItem,index)">
           <i class="fa-solid fa-trash-can"></i>
@@ -25,7 +25,8 @@ export default {
       localStorage.removeItem(todoItem);
       this.todoItems.splice(index,1);
     },
-    toggleComplete:function(todoItem){
+    toggleComplete:function(todoItem,index){
+      console.log('hi'+index)
       todoItem.completed = !todoItem.completed;
       // localstorage에 대이터 갱신
       localStorage.removeItem(todoItem.item);
