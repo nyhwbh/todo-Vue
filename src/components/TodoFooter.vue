@@ -11,7 +11,6 @@
 export default {
   methods:{
     clearTodo:function(){
-      console.log('it worked')
       localStorage.clear()
     }
   }
