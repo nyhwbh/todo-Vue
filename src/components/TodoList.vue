@@ -1,17 +1,17 @@
 <template>
   <div>
-    <ul>
-      <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow" >
-        <span v-on:click="toggleComplete(todoItem,index)">
-          <i class="checkBtn fa-solid fa-check"
-              v-bind:class="{checkBtnCompleted: todoItem.completed}"></i>
-        </span>
-        <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
-        <span class="removeBtn" v-on:click="removeTodo(todoItem,index)">
-          <i class="fa-solid fa-trash-can"></i>
-        </span>
-      </li>
-    </ul>
+    <transition-group name="modal-fade" tag="ul">
+        <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow" >
+          <span v-on:click="toggleComplete(todoItem,index)">
+            <i class="checkBtn fa-solid fa-check"
+            v-bind:class="{checkBtnCompleted: todoItem.completed}"></i>
+          </span>
+          <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
+          <span class="removeBtn" v-on:click="removeTodo(todoItem,index)">
+            <i class="fa-solid fa-trash-can"></i>
+          </span>
+        </li>
+    </transition-group>
   </div>
 </template>
 
@@ -64,5 +64,15 @@ li{
 .textCompleted {
   text-decoration: line-through;
   color: #b3adad;
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: all 1s ease;
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
