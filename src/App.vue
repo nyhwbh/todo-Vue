@@ -52,7 +52,12 @@ export default {
       }
     }
   },
-    components: { TodoHeader, TodoList, TodoInput, TodoFooter }
+    components: { 
+      TodoHeader, 
+      TodoList, 
+      TodoInput, 
+      TodoFooter 
+    }
 }
 </script>
 
