@@ -1,7 +1,7 @@
 <template>
   <div class="inputBox shadow">
-    <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo">
-    <span class="addContainer" v-on:click="addTodo">
+    <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo(newTodoItem),clearInput()">
+    <span class="addContainer" v-on:click="addTodo(newTodoItem),clearInput()">
       <i class="fa-solid fa-plus addBtn"></i>
     </span>
     <Modal v-if="showModal" @close="showModal = false">
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import Modal from "./common/MoDal"
 export default {
   data: function() {
@@ -26,14 +27,9 @@ export default {
     }
   },
   methods:{
-    addTodo() {
-      if(this.newTodoItem !== ''){
-        this.$store.commit('addOneItem', this.newTodoItem)
-        this.clearInput();
-      }else{
-        this.showModal = !this.showModal
-      }
-    },
+    ...mapMutations({
+      addTodo: 'addOneItem',
+    }),
       clearInput() {
         this.newTodoItem = ''
       }
