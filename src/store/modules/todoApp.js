@@ -24,6 +24,7 @@ const getters = {
 
 const mutations = {
      addOneItem(state, todoItem){
+        console.log(todoItem);
         const obj = {completed: false, item: todoItem};
         localStorage.setItem(todoItem, JSON.stringify(obj));
         state.todoItems.push(obj);
